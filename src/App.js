@@ -12,10 +12,10 @@ export default function App() {
   const fetchApi = async () =>{
     try {
       const res = await axios.get(`https://restcountries.com/v3.1/all`);
-      console.log(res.data);
+      console.log("country data =>",res.data);
       setCountries(res.data)
-    } catch (error) {
-      console.log(error);
+    } catch (e) {
+      console.log("Error fetching data: ", e);
     }
   };
 
