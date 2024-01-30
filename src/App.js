@@ -14,8 +14,8 @@ export default function App() {
       const res = await axios.get(`https://restcountries.com/v3.1/all`);
       console.log(res.data);
       setCountries(res.data)
-    } catch (e) {
-      console.log("ERROR IN API", e);
+    } catch (error) {
+      console.log(error);
     }
   };
 
