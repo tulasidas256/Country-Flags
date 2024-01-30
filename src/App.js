@@ -1,15 +1,23 @@
 import React,{ useEffect, useState } from "react";
+import axios from "axios";
 
 
 export default function App() {
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((res) => res.json())
-      .then((data) => setCountries(data))
-      .catch((err) => console.error("Error fetching data: ", err));
+    fetchApi();
   }, []);
+
+  const fetchApi = async () =>{
+    try {
+      const res = await axios.get(`https://restcountries.com/v3.1/all`);
+      console.log(res.data);
+      setCountries(res.data)
+    } catch (e) {
+      console.log("ERROR IN API", e);
+    }
+  };
 
   const cardStyle = {
     width: "200px",
